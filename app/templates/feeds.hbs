@@ -1,0 +1,29 @@
+{{#paper-nav-container classNames="ember-app"}}
+
+  {{#paper-sidenav classNames="md-sidenav-left md-whiteframe-z2" flex-layout="column" flex=true }}
+    {{#paper-toolbar}}
+      <div class="md-toolbar-tools">
+        <strong>Feeds ({{length}})</strong>
+      </div>
+    {{/paper-toolbar}}
+    {{#paper-content}}
+      {{#paper-list}}
+        {{#each feed in this}}
+          {{#paper-item classNames="md-item"}}
+            {{#paper-button classNames="md-primary md-button"}}
+              {{feed.name}}
+              <!--<div class="url">{{feed.url}}</div>-->
+            {{/paper-button}}
+          {{/paper-item}}
+        {{/each}}
+      {{/paper-list}}
+    {{/paper-content}}
+  {{/paper-sidenav}}
+
+  {{#paper-content flex-layout="column" flex=true}}
+    <div class="logo">
+      {{outlet}}
+    </div>
+  {{/paper-content}}
+
+{{/paper-nav-container}}

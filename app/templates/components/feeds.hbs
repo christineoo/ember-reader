@@ -1,0 +1,19 @@
+<div class="left-column">
+  <div class="feeds-view">
+    <header>
+      <h3>Feeds ({{length}})</h3>
+      <h3>Feeds ({{length}})</h3>
+      {{#link-to feeds.new class="new"}}New{{/link-to}}      
+    </header>
+    <ul>
+      {{#each feed in feeds}}
+        <li>
+          <div class="name">{{feed.name}}</div>
+          <div class="url">{{feed.url}}</div>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
+{{outlet}}
+

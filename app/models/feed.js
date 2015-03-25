@@ -2,7 +2,8 @@ import DS from "ember-data";
 
 var Feed = DS.Model.extend({
   name: DS.attr('string'),
-  url: DS.attr('string')
+  url: DS.attr('string'),
+  feedItems: DS.hasMany('feed-item')
 });
 
 Feed.reopenClass({

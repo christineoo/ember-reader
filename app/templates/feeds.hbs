@@ -9,12 +9,14 @@
     {{#paper-content}}
       {{#paper-list}}
         {{#each feed in this}}
+          {{#link-to 'feed' feed}}
           {{#paper-item classNames="md-item"}}
             {{#paper-button classNames="md-primary md-button"}}
               {{feed.name}}
               <!--<div class="url">{{feed.url}}</div>-->
             {{/paper-button}}
           {{/paper-item}}
+          {{/link-to}}
         {{/each}}
       {{/paper-list}}
     {{/paper-content}}

@@ -1,9 +1,37 @@
 import DS from "ember-data";
+import Ember from 'ember';
 
 var Feed = DS.Model.extend({
   name: DS.attr('string'),
   url: DS.attr('string'),
-  feedItems: DS.hasMany('feed-item')
+  feedItems: DS.hasMany('feed-item'),
+
+  refresh: function() {
+    var url = this.get('url');
+    var googleUrl = document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(url);
+    Ember.$.ajax({
+      url: googleUrl,
+      dataType: 'json',
+      context: this,
+      success: function(data) {
+        var feed = data.responseData.feed;
+        var items = feed.entries.forEach(function(entry) {
+          if(this.get('feedItems').findProperty('link', entry.link)) {
+            return;
+          }
+          var feedItem = this.get('feedItems').createRecord({
+            title: entry.title,
+            author: entry.author,
+            body: entry.content,
+            bodySnippet: entry.contentSnippet,
+            link: entry.link,
+            publishedDate: entry.publishedDate
+          });
+        }, this);
+        //this.get('store').commit();
+      }
+    });
+  }
 });
 
 Feed.reopenClass({

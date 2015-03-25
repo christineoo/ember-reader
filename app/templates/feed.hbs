@@ -2,7 +2,8 @@
 <h2>{{this.name}}</h2>
 <h2>{{this.url}}</h2>
 <h2>{{this.feedItems.length}}</h2>
+<h2>{{this.feedItems}}</h2>
 
 {{#each feed in this.feedItems}}
-  <h2>{{feed}}</h2>
+  <h2>{{feed.title}}</h2>
 {{/each}}

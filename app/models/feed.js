@@ -28,7 +28,7 @@ var Feed = DS.Model.extend({
             publishedDate: entry.publishedDate
           });
         }, this);
-        //this.get('store').commit();
+        this.get('feedItems').save();
       }
     });
   }

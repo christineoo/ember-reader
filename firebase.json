@@ -1,0 +1,14 @@
+{
+  "firebase": "dazzling-inferno-8889",
+  "public": "dist",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ],
+  "rewrites": 
+  [{
+    "source": "**",
+    "destination": "/index.html"
+  }]
+}

@@ -8,7 +8,7 @@
     <a target="_blank" {{bind-attr href="feed.link"}}>
       <h4>{{feed.title}}</h4>
     </a>
-    <p>{{feed.bodySnippet}}</p>
+    <p>{{markdown-to-html markdown=feed.bodySnippet}}</p>
     <p>{{feed.publishedDate}}</p>
     {{paper-divider}}
   {{/each}}

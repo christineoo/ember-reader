@@ -43,12 +43,12 @@ Feed.reopenClass({
     },
     {
       id: 2,
-      name: 'GroupTalent Blog',
-      url: 'https://grouptalent.com/blog/feed.xml'
+      name: 'Android Developers Blog',
+      url: 'http://feeds.feedburner.com/blogspot/hsDu?format=xml'
     },
     {
       id: 3,
-      name: 'AlistAPart',
+      name: 'A List A Part',
       url: 'http://alistapart.com/site/rss'
     }
   ]

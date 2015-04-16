@@ -1,15 +1,15 @@
 <!-- <h1>{{this.id}}</h1> -->
 <h2>{{this.name}}</h2>
 <!-- <h2>{{this.url}}</h2>-->
-<span><i>Total feeds: {{this.feedItems.length}}</i></span>
-
+<p><i>Total feeds: {{this.feedItems.length}}</i></p>
+<p>Today's date: {{current-date}}</p>
 {{#paper-list}}
   {{#each feed in this.feedItems}}
     <a target="_blank" {{bind-attr href="feed.link"}}>
       <h4>{{feed.title}}</h4>
     </a>
     <p>{{markdown-to-html markdown=feed.bodySnippet}}</p>
-    <p>{{feed.publishedDate}}</p>
+    <p>{{format-date feed.publishedDate}}</p>
     {{paper-divider}}
   {{/each}}
 {{/paper-list}}

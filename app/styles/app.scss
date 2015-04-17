@@ -26,3 +26,23 @@ a {
     width: 100%;
   }
 }
+
+.sidenav ul li {
+  > a {
+    display: block;
+    font-size: 15px;
+    text-decoration: none;
+    color: #424242;
+    font-weight: 500;
+    padding: 1.1em 1.2em;
+  }
+}
+
+.sidenav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  &:hover {
+    background-color: #d3d3d3;
+  }
+}

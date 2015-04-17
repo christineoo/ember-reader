@@ -7,18 +7,15 @@
       </div>
     {{/paper-toolbar}}
     {{#paper-content}}
+      <nav class="sidenav">
       {{#paper-list}}
         {{#each feed in this}}
-          {{#link-to 'feed' feed}}
-          {{#paper-item classNames="md-item"}}
-            {{#paper-button classNames="md-primary md-button"}}
-              {{feed.name}}
-              <!--<div class="url">{{feed.url}}</div>-->
-            {{/paper-button}}
-          {{/paper-item}}
-          {{/link-to}}
+          <ul>
+            <li>{{#link-to 'feed' feed}}{{feed.name}}{{/link-to}}</li>
+          </ul>
         {{/each}}
       {{/paper-list}}
+      </nav>
     {{/paper-content}}
   {{/paper-sidenav}}
 

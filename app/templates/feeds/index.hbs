@@ -1,0 +1,16 @@
+{{#paper-toolbar}}
+  <div class="md-toolbar-tools">
+    <h2 flex=true class="md-toolbar-tools">
+      {{#paper-sidenav-toggle class="menu-sidenav-toggle"}}
+        {{paper-icon icon="menu"}}
+      {{/paper-sidenav-toggle}}
+      <img src="/images/emberjs-logo.png" height="50">
+      <strong>Ember Reader</strong>
+    </h2>
+    {{#link-to "feeds.new" class="new"}}
+      {{#paper-button classNames="md-icon"}}
+        {{paper-icon icon="add-circle" size="lg"}}
+      {{/paper-button}}
+    {{/link-to}}
+  </div>
+{{/paper-toolbar}}

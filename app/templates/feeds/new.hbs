@@ -1,6 +1,15 @@
-<div class="feeds-new-view">
-
-  <h3>New Feed</h3>
+{{#paper-toolbar}}
+  <div class="md-toolbar-tools">
+    <h2 flex=true class="md-toolbar-tools">
+      {{#paper-sidenav-toggle class="menu-sidenav-toggle"}}
+        {{paper-icon icon="menu"}}
+      {{/paper-sidenav-toggle}}
+      <img src="/images/emberjs-logo.png" height="50">
+      <strong>New Feed</strong>
+    </h2>
+  </div>
+{{/paper-toolbar}}
+<div class="container">
   {{paper-text label="Name" value=name}}
   {{paper-text label="URL" value=url}}
   {{#paper-button raised=true classNames="md-primary" action="save" }}

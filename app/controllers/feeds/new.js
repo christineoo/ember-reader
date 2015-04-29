@@ -27,7 +27,7 @@ export default Ember.ObjectController.extend({
 
       Ember.$.ajax({
         type: "GET",
-        url: "http://stageapp-leprachaun.herokuapp.com/",
+        url: "https://stageapp-leprachaun.herokuapp.com/",
         dataType: 'text/html',
         success: function(data){
           if (data.results){

@@ -17,7 +17,30 @@ export default Ember.ObjectController.extend({
       var model = this.get('model');
       model.deleteRecord();
       this.target.transitionTo('feeds.index');
+    },
+    userLogin: function(){
+      var self = this;
+      //this.getProperties automatically return the key, value hash of the property provided
+      var data = this.getProperties('email','password');
+      console.log("data.email: " +data.email);
+      console.log("data.password: " +data.password);
+
+      Ember.$.ajax({
+        type: "GET",
+        url: "http://stageapp-leprachaun.herokuapp.com/",
+        dataType: 'text/html',
+        success: function(data){
+          if (data.results){
+            self.set('token', data.results.authtoken);
+            self.transitionToRoute('home');
+          }
+          else {
+            self.set('errorMessage', "invalid email/password");
+          }
+        }
+      });
     }
+
   }
 });
 

@@ -14,19 +14,22 @@
     {{/link-to}}
   </div>
 {{/paper-toolbar}}
-<div class="container">
-  {{#paper-list}}
-    <p><i>Total feeds: {{this.feedItems.length}}</i></p>
-    <p>Today's date: {{current-date}}</p>
-    {{#each feed in this.feedItems}}
-      <a target="_blank" {{bind-attr href="feed.link"}}>
-        <h4>{{feed.title}}</h4>
-      </a>
-      <!--<p>{{markdown-to-html markdown=feed.bodySnippet}}</p>-->
-      <p>{{feed.bodySnippet}}</p>
-      <p>{{format-date feed.publishedDate}}</p>
-      <!--<iframe {{bind-attr src="feed.link"}}></iframe>-->
-      {{paper-divider}}
-    {{/each}}
-  {{/paper-list}}
-</div>
+
+{{#paper-content}}
+  <div class="container">
+    {{#paper-list}}
+      <p><i>Total feeds: {{this.feedItems.length}}</i></p>
+      <p>Today's date: {{current-date}}</p>
+      {{#each feed in this.feedItems}}
+        <a target="_blank" {{bind-attr href="feed.link"}}>
+          <h4>{{feed.title}}</h4>
+        </a>
+        <!--<p>{{markdown-to-html markdown=feed.bodySnippet}}</p>-->
+        <p>{{feed.bodySnippet}}</p>
+        <p>{{format-date feed.publishedDate}}</p>
+        <!--<iframe {{bind-attr src="feed.link"}} height="300" width="700"></iframe>-->
+        {{paper-divider}}
+      {{/each}}
+    {{/paper-list}}
+  </div>
+{{/paper-content}}

@@ -4,6 +4,7 @@ import Ember from 'ember';
 var Feed = DS.Model.extend({
   name: DS.attr('string'),
   url: DS.attr('string'),
+  isRssfeed: DS.attr('boolean', {defaultValue: true}),
   feedItems: DS.hasMany('feed-item'),
 
   refresh: function() {

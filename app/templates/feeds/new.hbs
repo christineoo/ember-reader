@@ -13,6 +13,14 @@
   <div class="container">
     {{paper-text label="Name" value=name}}
     {{paper-text label="URL" value=url}}
+    {{#paper-switch checked=isRssfeed}}
+      {{#if isRssfeed}}
+        <p>Yes, this is rss feed url</p>
+      {{else}}
+        <p>No, this is not a rss feed url</p>
+      {{/if}}
+    {{/paper-switch}}
+
     {{#paper-button raised=true classNames="md-primary" action="save" }}
       Save
     {{/paper-button}}

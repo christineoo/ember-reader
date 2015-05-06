@@ -9,29 +9,32 @@ var Feed = DS.Model.extend({
 
   refresh: function() {
     var url = this.get('url');
+    var isRssfeed = this.get('isRssfeed');
     var googleUrl = document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(url);
-    Ember.$.ajax({
-      url: googleUrl,
-      dataType: 'json',
-      context: this,
-      success: function(data) {
-        var feed = data.responseData.feed;
-        var items = feed.entries.forEach(function(entry) {
-          if(this.get('feedItems').findProperty('link', entry.link)) {
-            return;
-          }
-          var feedItem = this.get('feedItems').createRecord({
-            title: entry.title,
-            author: entry.author,
-            body: entry.content,
-            bodySnippet: entry.contentSnippet,
-            link: entry.link,
-            publishedDate: entry.publishedDate
-          });
-        }, this);
-        this.get('feedItems').save();
-      }
-    });
+    if (isRssfeed){
+      Ember.$.ajax({
+        url: googleUrl,
+        dataType: 'json',
+        context: this,
+        success: function(data) {
+          var feed = data.responseData.feed;
+          var items = feed.entries.forEach(function(entry) {
+            if(this.get('feedItems').findProperty('link', entry.link)) {
+              return;
+            }
+            var feedItem = this.get('feedItems').createRecord({
+              title: entry.title,
+              author: entry.author,
+              body: entry.content,
+              bodySnippet: entry.contentSnippet,
+              link: entry.link,
+              publishedDate: entry.publishedDate
+            });
+          }, this);
+          this.get('feedItems').save();
+        }
+      });
+    }
   }
 });
 

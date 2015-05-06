@@ -17,19 +17,38 @@
 
 {{#paper-content}}
   <div class="container">
-    {{#paper-list}}
-      <p><i>Total feeds: {{this.feedItems.length}}</i></p>
-      <p>Today's date: {{current-date}}</p>
-      {{#each feed in this.feedItems}}
-        <a target="_blank" {{bind-attr href="feed.link"}}>
-          <h4>{{feed.title}}</h4>
-        </a>
-        <!--<p>{{markdown-to-html markdown=feed.bodySnippet}}</p>-->
-        <p>{{feed.bodySnippet}}</p>
-        <p>{{format-date feed.publishedDate}}</p>
-        <!--<iframe {{bind-attr src="feed.link"}} height="300" width="700"></iframe>-->
-        {{paper-divider}}
-      {{/each}}
-    {{/paper-list}}
+    {{#if this.isRssfeed}}
+      {{#paper-list}}
+        <p><i>Total feeds: {{this.feedItems.length}}</i></p>
+        <p>Today's date: {{current-date}}</p>
+          {{#each feed in this.feedItems}}
+            {{#paper-item}}
+            {{#paper-tile-left}}
+              <img src="http://blog.eacomm.com/wp-content/uploads/2011/03/android-logo.jpg" class="face">
+            {{/paper-tile-left}}
+            {{#paper-tile-content}}
+              <a target="_blank" {{bind-attr href="feed.link"}}>
+                <h3>{{feed.title}}</h3>
+              </a>
+
+<!--
+{{#link-to 'feed.title' this}}{{feed.title}}{{/link-to}}
+-->
+              <h4>{{markdown-to-html markdown=feed.bodySnippet}}</h4>
+              <!--<p>{{feed.bodySnippet}}</p>-->
+              <p>{{format-date feed.publishedDate}}</p>
+
+              <!--
+              <iframe {{bind-attr src="feed.link"}} height="300" width="700"></iframe>
+              {{paper-divider}}
+              -->
+
+            {{/paper-tile-content}}
+           {{/paper-item}}
+          {{/each}}
+      {{/paper-list}}
+        {{else}}
+            <iframe {{bind-attr src="this.url"}} height="10000" width="900" frameBorder="0" scrolling="no"></iframe>
+    {{/if}}
   </div>
 {{/paper-content}}

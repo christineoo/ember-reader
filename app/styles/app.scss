@@ -10,8 +10,9 @@ a {
 }
 
 .container {
-  padding: 30px;
+  padding: 10px;
   max-width: 864px;
+  margin: auto;
 }
 
 .md-sidenav-left {
@@ -59,4 +60,12 @@ a {
 
 .ember-text-field {
   width: 70%;
+}
+
+.face {
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  width: 60px;
+  height: 60px;
+  margin: 16px;
 }

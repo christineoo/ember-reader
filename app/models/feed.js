@@ -4,10 +4,12 @@ import Ember from 'ember';
 var Feed = DS.Model.extend({
   name: DS.attr('string'),
   url: DS.attr('string'),
+  category: DS.attr('string'),
   isRssfeed: DS.attr('boolean', {defaultValue: true}),
-  feedItems: DS.hasMany('feed-item'),
+  feedItems: DS.hasMany('feed-item', {async: true}),
 
   refresh: function() {
+    var self = this;
     var url = this.get('url');
     var isRssfeed = this.get('isRssfeed');
     var googleUrl = document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(url);
@@ -19,19 +21,23 @@ var Feed = DS.Model.extend({
         success: function(data) {
           var feed = data.responseData.feed;
           var items = feed.entries.forEach(function(entry) {
-            if(this.get('feedItems').findProperty('link', entry.link)) {
+            if(self.get('feedItems').findProperty('link', entry.link)) {
+              // if the feed-item is already exist then dont create a new record,
+              // this is to prevent creating duplicated feed-item entries
               return;
             }
-            var feedItem = this.get('feedItems').createRecord({
-              title: entry.title,
-              author: entry.author,
-              body: entry.content,
-              bodySnippet: entry.contentSnippet,
-              link: entry.link,
-              publishedDate: entry.publishedDate
-            });
-          }, this);
-          this.get('feedItems').save();
+            self.store.find('feed', self.get('id')).then(function(x){
+              var feedItem = self.get('feedItems').createRecord({
+                title: entry.title,
+                author: entry.author,
+                body: entry.content,
+                bodySnippet: entry.contentSnippet,
+                link: entry.link,
+                publishedDate: entry.publishedDate
+              });
+              feedItem.save();
+            })
+          });
         }
       });
     }

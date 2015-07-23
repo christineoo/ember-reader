@@ -7,13 +7,13 @@ export default Ember.Route.extend({
 
   actions: {
     showCategory: function(category){
-      if (category == 'android'){
+      if (category === 'android'){
         this.controller.toggleProperty('isShowAndroidCategory');
       }
-      else if (category == 'design'){
+      else if (category === 'design'){
         this.controller.toggleProperty('isShowDesignCategory');
       }
-      else if (category == 'news'){
+      else if (category === 'news'){
         this.controller.toggleProperty('isShowNewsCategory');
       }
     }

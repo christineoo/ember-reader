@@ -41,7 +41,14 @@ a {
     text-decoration: none;
     color: #424242;
     font-weight: 500;
-    padding: 1.1em 1.2em;
+    padding: 0.5em 3.2em;
+    &.active {
+      background-color: #ccedfc;
+    }
+    &:hover {
+      color: #FFF;
+      background-color: #81D4FA;
+    }
   }
 }
 
@@ -50,22 +57,39 @@ a {
   padding: 0;
   list-style-type: none;
   &:hover {
-    background-color: #d3d3d3;
+    color: #FFF;
+    background-color: #4FC3F7;
   }
-}
-
-.active {
-   background-color: #ccedfc;
 }
 
 .ember-text-field {
   width: 70%;
 }
 
-.face {
+.feed-index {
   border-radius: 30px;
   border: 1px solid #ddd;
   width: 60px;
   height: 60px;
   margin: 16px;
+  text-align: center;
+  line-height: 60px;
+  background-color: #03a9f4;
+  color: #FFF;
+}
+
+.subCategory {
+  transition-duration: 0.4s;
+}
+
+.categorySelected {
+  padding: 0.8em 1.2em;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.categoryNotSelected {
+  padding: 1.1em 1.2em;
+  font-weight: 500;
+  font-size: 20px;
 }

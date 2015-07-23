@@ -1,0 +1,18 @@
+{{#paper-toolbar}}
+  <div class="md-toolbar-tools">
+    <h2 flex=true class="md-toolbar-tools">
+      {{#paper-sidenav-toggle class="menu-sidenav-toggle"}}
+        {{paper-icon icon="menu"}}
+      {{/paper-sidenav-toggle}}
+      <!--<img src="/images/emberjs-logo.png" height="50">-->
+        {{model.feed.name}} <strong>&nbsp; > &nbsp; </strong>{{model.title}}
+    </h2>
+      {{#paper-button classNames="md-icon" action="back"}}
+        {{paper-icon icon="arrow-back" size="lg"}}
+      {{/paper-button}}
+  </div>
+{{/paper-toolbar}}
+
+{{#paper-content classNames="ember-app"}}
+    <iframe id="iframeid" {{bind-attr src="model.link"}} frameBorder="0" scrolling="yes" width="100%" height="100%" ></iframe>
+{{/paper-content}}

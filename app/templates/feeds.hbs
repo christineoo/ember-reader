@@ -1,19 +1,75 @@
-{{#paper-nav-container classNames="ember-app"}}
+{{#paper-nav-container open=drawerOpen classNames="ember-app"}}
 
   {{#paper-sidenav classNames="md-sidenav-left md-whiteframe-z2" flex-layout="column" flex=true }}
     {{#paper-toolbar}}
       <div class="md-toolbar-tools">
-        <strong>Feeds ({{length}})</strong>
+        <img src="/images/emberjs-logo.png" height="50">
+        <strong>Reader</strong>
       </div>
     {{/paper-toolbar}}
     {{#paper-content}}
       <nav class="sidenav">
       {{#paper-list}}
-        {{#each feed in this}}
-          <ul>
-            <li>{{#link-to 'feed' feed}}{{feed.name}}{{/link-to}}</li>
-          </ul>
-        {{/each}}
+        <ul>
+          <li {{action 'showCategory' 'android'}} {{bind-attr class="isShowAndroidCategory:categorySelected:categoryNotSelected"}}>
+            Android
+            {{#if isShowAndroidCategory}}
+              {{paper-icon icon="expand-less"}}
+            {{else}}
+              {{paper-icon icon="expand-more"}}
+            {{/if}}
+          </li>
+        </ul>
+        <div class="subCategory">
+        {{#if isShowAndroidCategory}}
+          {{#each feed in androidCategory}}
+            <ul>
+              <li>{{#link-to 'feed' feed}}{{feed.name}}{{/link-to}}</li>
+            </ul>
+          {{/each}}
+        {{/if}}
+        </div>
+{{paper-divider}}
+        <ul>
+          <li {{action 'showCategory' 'design'}} {{bind-attr class="isShowDesignCategory:categorySelected:categoryNotSelected"}}>
+            Design
+            {{#if isShowDesignCategory}}
+              {{paper-icon icon="expand-less"}}
+            {{else}}
+              {{paper-icon icon="expand-more"}}
+            {{/if}}
+          </li>
+        </ul>
+        <div class="subCategory">
+        {{#if isShowDesignCategory}}
+          {{#each feed in designCategory}}
+            <ul>
+              <li>{{#link-to 'feed' feed}}{{feed.name}}{{/link-to}}</li>
+            </ul>
+          {{/each}}
+        {{/if}}
+        </div>
+{{paper-divider}}
+        <ul>
+          <li {{action 'showCategory' 'news'}} {{bind-attr class="isShowNewsCategory:categorySelected:categoryNotSelected"}}>
+            News
+            {{#if isShowNewsCategory}}
+              {{paper-icon icon="expand-less"}}
+            {{else}}
+              {{paper-icon icon="expand-more"}}
+            {{/if}}
+          </li>
+        </ul>
+        <div class="subCategory">
+        {{#if isShowNewsCategory}}
+          {{#each feed in newsCategory}}
+            <ul>
+              <li>{{#link-to 'feed' feed}}{{feed.name}}{{/link-to}}</li>
+            </ul>
+          {{/each}}
+        {{/if}}
+        </div>
+{{paper-divider}}
       {{/paper-list}}
       </nav>
     {{/paper-content}}

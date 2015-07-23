@@ -11,15 +11,19 @@
 {{/paper-toolbar}}
 {{#paper-content}}
   <div class="container">
-    {{paper-text label="Name" value=name}}
-    {{paper-text label="URL" value=url}}
-    {{#paper-switch checked=isRssfeed}}
-      {{#if isRssfeed}}
+    {{paper-text label="Name" value=model.name}}
+    {{paper-text label="URL" value=model.url}}
+    {{#paper-switch checked=model.isRssfeed}}
+      {{#if model.isRssfeed}}
         <p>Yes, this is rss feed url</p>
       {{else}}
         <p>No, this is not a rss feed url</p>
       {{/if}}
     {{/paper-switch}}
+
+    {{#paper-radio value="design" selected=selectedValue}}Design{{/paper-radio}}
+    {{#paper-radio value="android" selected=selectedValue}}Android{{/paper-radio}}
+    {{#paper-radio value="news" selected=selectedValue}}News{{/paper-radio}}
 
     {{#paper-button raised=true classNames="md-primary" action="save" }}
       Save

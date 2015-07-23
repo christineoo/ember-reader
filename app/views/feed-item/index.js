@@ -5,6 +5,11 @@ export default Ember.View.extend({
 
     didInsertElement: function() {
       document.getElementById('iframeid').style.height = (window.innerHeight-80) + "px";
+      $(window).on('resize', function(){
+        Ember.run(function(){
+          document.getElementById('iframeid').style.height = (window.innerHeight-80) + "px";
+        });
+      });
     }
 
 });

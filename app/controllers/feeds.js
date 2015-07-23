@@ -14,4 +14,4 @@ export default Ember.ArrayController.extend({
     return this.filterBy('category', 'news');
   }.property('@each.category'),
 
-})
+});

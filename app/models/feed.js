@@ -36,7 +36,7 @@ var Feed = DS.Model.extend({
                 publishedDate: entry.publishedDate
               });
               feedItem.save();
-            })
+            });
           });
         }
       });

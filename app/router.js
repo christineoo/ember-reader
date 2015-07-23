@@ -10,6 +10,10 @@ Router.map(function() {
     this.route('new');
     this.resource('feed', {path: '/feeds/:feed_id'}, function(){
       this.route('index');
+      //this.route('feedItem', {path: '/feedItem/:feedItems_id'});
+    });
+    this.resource('feedItem', {path: '/feedItems/:feedItems_id'}, function(){
+      this.route('index');
     });
   });
 });

@@ -20,13 +20,13 @@ var Feed = DS.Model.extend({
         context: this,
         success: function(data) {
           var feed = data.responseData.feed;
-          var items = feed.entries.forEach(function(entry) {
+          feed.entries.forEach(function(entry) {
             if(self.get('feedItems').findProperty('link', entry.link)) {
               // if the feed-item is already exist then dont create a new record,
               // this is to prevent creating duplicated feed-item entries
               return;
             }
-            self.store.find('feed', self.get('id')).then(function(x){
+            self.store.find('feed', self.get('id')).then(function(){
               var feedItem = self.get('feedItems').createRecord({
                 title: entry.title,
                 author: entry.author,
